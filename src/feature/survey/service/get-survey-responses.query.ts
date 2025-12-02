@@ -17,7 +17,7 @@ export const GetSurveyResponsesQuery = ({
   surveyId: string;
   companyId?: string;
 }) => {
-  const queryKey = ["survey-details", surveyId];
+  const queryKey = ["survey-details", surveyId, pagination?.page];
 
   return useQuery({
     queryKey,

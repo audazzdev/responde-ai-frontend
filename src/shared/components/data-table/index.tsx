@@ -66,7 +66,6 @@ export function DataTable<TData, TValue>({
   sorting = [],
   setSorting,
   rowSelection = {},
-
   setRowSelection,
 }: DataTableProps<TData, TValue>) {
   const { t } = useTranslation("common");
