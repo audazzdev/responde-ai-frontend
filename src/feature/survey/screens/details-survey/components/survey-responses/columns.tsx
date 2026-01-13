@@ -1,5 +1,6 @@
 import { SurveyResponseModel } from "@/feature/survey/model/survey-response";
 import { ColumnDef } from "@tanstack/react-table";
+import { SecondsToHoursMinutesSeconds } from "../../../../../../shared/utils/seconds-to-hh-mm-ss";
 
 export const responseColumns: ColumnDef<SurveyResponseModel>[] = [
   { accessorKey: "id", header: "Id" },
@@ -12,7 +13,12 @@ export const responseColumns: ColumnDef<SurveyResponseModel>[] = [
         : row.original.sourceLinkId;
     },
   },
-  { accessorKey: "responsesOverTime.count", header: "Tempo de Resposta (s)" },
+  {
+    accessorKey: "timeToSubmitSeconds",
+    header: "Tempo de Resposta",
+    cell: ({ row }) =>
+      SecondsToHoursMinutesSeconds(row.original.timeToSubmitSeconds ?? 0),
+  },
   {
     accessorKey: "submittedAt",
     header: "Data de Envio",
